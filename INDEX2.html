@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- JS -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+    <!-- 구글폰트 -->
+    <link href="https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap" rel="stylesheet">
+
+    <title> Item | Item Page </title>
+
+    <style>
+
+        * {
+            font-family: 'Hi Melody', cursive;
+        }
+
+        .mainbox0 {
+
+            color: black;
+
+            width: 210mm;
+            height: 270mm;
+            border-style: solid;
+            border-top-width: thin;
+            border-bottom-width: thin;
+            border-left-width: thin;
+            border-right-width: thin;
+            margin: auto;
+
+
+        }
+
+        /*.mainbox {*/
+        /*          color: black;*/
+
+        /*          width: 170mm;*/
+        /*          height: 100mm;*/
+        /*          background-position: center;*/
+        /*          background-size: cover;*/
+
+        /*          border-style: solid;*/
+        /*          border-top-width: thin;*/
+        /*          border-bottom-width: thin;*/
+        /*          border-left-width: thin;*/
+        /*          border-right-width: thin;*/
+        /*          text-align: center;*/
+        /*          padding: 150px;*/
+        /*          margin-top: 10px;*/
+        /*          margin-bottom: 60px;*/
+        /*          margin-left: auto;*/
+        /*          margin-right: auto;*/
+
+
+        .subbox00 {
+            margin-left: 300px;
+        }
+
+        .imagebox0 {
+            color: white;
+            width: 190mm;
+            height: 100mm;
+            background-image: url(https://c4.wallpaperflare.com/wallpaper/108/140/869/digital-digital-art-artwork-fantasy-art-drawing-hd-wallpaper-thumb.jpg);
+            background-position: center;
+            background-size: cover;
+        }
+
+        .imageboxdetail {
+            margin-top: 10mm;
+            margin-right: 10mm;
+            margin-left: 10mm;
+            margin-bottom: 10mm;
+
+
+        }
+
+        .dollor-won-rate {
+            color: blue;
+            font-size: 40px;
+        }
+    </style>
+    <script>
+
+        function order111() {
+            let name0 = $('#namebox').val();
+            let select0 = $('#selectbox').val();
+            let adress0 = $('#adressbox').val();
+            let number0 = $('#numberbox').val();
+
+
+            if (name0 == '') {
+                alert('이름을 입력해 주세요!')
+                return;
+            } else if (select0 == '') {
+                alert('수량을 선택해 주세요!')
+                return;
+            } else if (adress0 == '') {
+                alert('주소를 입력해 주세요!')
+                return;
+            } else if (number0 == '') {
+                alert('휴대폰 번호를 입력해 주세요!')
+                return;
+            } else {
+                alert('주문이 완료되었습니다!')
+            }
+        }
+
+
+        $(document).ready(function () {
+            alert('다 로딩됐다!')
+            $.ajax({
+                type: "GET",
+                url: "https://api.manana.kr/exchange/rate.json",
+                data: {},
+                success: function (response) {
+                    for (let i = 0; i < response.length; i++) {
+                        if (response[i]['name'] == 'USDKRW=X') {
+                            $('#exchangerate').text(response[i]['rate']);
+                            return;
+                        }
+                    }
+
+
+                }
+            })
+        })
+        ;
+
+    </script>
+
+</head>
+
+<body>
+
+<div class="mainbox0">
+    <div class="imageboxdetail">
+        <div class="imagebox0">
+        </div>
+    </div>
+
+    <!--    <div class="mainbox">-->
+
+    <!--        <h1>PAGE</h1>-->
+
+    <!--    </div>-->
+    <div class="dollor-won-rate">&nbsp▶ 달러-원 환율: <span id="exchangerate"></span>
+    </div>
+    <div>
+        <h2>&nbsp<span style="font-size:30px">▶&nbsp풍경화</span>
+            &nbsp <span style="font-size:20px"><span style="font-weight: normal"> 가격: 1,000원 / 개</span></span></h2>
+
+
+        &nbsp&nbsp&nbsp 자연의 아름다운 풍경을 감상할 수 있는 그림입니다
+    </div>
+    <p>
+
+    </p>
+
+    <div>
+
+        &nbsp<span style="font-size:30px"> ▶&nbsp주문하기</span>
+    </div>
+    <p>
+
+    </p>
+    <div>
+        <div class="form-group">
+            &nbsp&nbsp&nbsp <label for="namebox">성함</label>
+            &nbsp&nbsp&nbsp <input type="email" class="col-sm-4 col-form-label"
+                                   id="namebox"
+        >
+        </div>
+        <div class="form-group">
+            &nbsp&nbsp&nbsp <label for="selectbox">수량</label>
+            &nbsp&nbsp <select class="col-sm-4 col-form-label" id="selectbox">
+
+            <option selected value="">수량을 선택하세요</option>
+
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+        </div>
+
+        <div class="form-group">
+            &nbsp&nbsp&nbsp <label for="adressbox">주소</label>
+            &nbsp&nbsp&nbsp<input type="email" class="col-sm-8 col-form-label" id="adressbox"
+        >
+        </div>
+        <div class="form-group">
+            &nbsp&nbsp&nbsp <label for="numberbox">전화번호</label>
+            &nbsp&nbsp&nbsp<input type="email" class="col-sm-5 col-form-label" id="numberbox"
+        >
+        </div>
+
+
+    </div>
+    <div class="subbox00">
+        <button onclick="order111()" type="button" class="btn btn-secondary btn-lg">주문하기</button>
+    </div>
+</div>
+
+</div>
+
+</body>
+
+</html>
